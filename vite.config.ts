@@ -16,5 +16,6 @@ export default defineConfig({
   server: {
     port: 5173, // or any other port number
     host: '0.0.0.0', // To make it accessible on all network interfaces
+    allowedHosts: ['aignite.onrender.com'], // Add your Render hostname here
   }
 })
