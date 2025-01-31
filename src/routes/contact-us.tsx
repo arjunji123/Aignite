@@ -53,7 +53,7 @@ const ContactUs = () => {
         <p><b>Email:</b> ${formData.email}</p>
         <p><b>Message:</b> ${formData.message}</p>
       `,
-    }).then((message: string) => alert("Message sent successfully!"));
+    }).then(() => alert("Message sent successfully!"));
   };
 
   return (

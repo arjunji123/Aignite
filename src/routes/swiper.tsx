@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import "./about-us.css"; // Make sure you have this file
 
