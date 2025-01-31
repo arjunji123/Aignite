@@ -58,14 +58,15 @@ const HomePage = () => {
 
           <div className="hidden md:block absolute w-80 bottom-4 right-4 px-4 py-2 rounded-md bg-white/60 backdrop-blur-md">
             <h2 className="text-neutral-800 font-semibold">Developer</h2>
-            <p className="text-sm text-neutral-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              distinctio natus, quos voluptatibus magni sapiente.
+            <p className="text-sm text-neutral-600">
+            Elevate your interview prep with Aignite. Boost confidence and gain the AI edge to stand out in the job market.
             </p>
-
+            <Link to={"/generate"} className="w-full">
             <Button className="mt-3 bg-black">
               Generate <Sparkles />
             </Button>
+            </Link>
+
           </div>
         </div>
       </Container>

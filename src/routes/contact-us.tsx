@@ -1,12 +1,7 @@
 import './contactus.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect  } from 'react';
+import { useForm } from '@formspree/react';
 
-// Extending Window interface to include `Email`
-declare global {
-  interface Window {
-    Email: any; // or a more specific type, depending on what `Email` is
-  }
-}
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -15,49 +10,31 @@ const ContactUs = () => {
     message: ''
   });
 
+  const [state, handleSubmit] = useForm("movjwdvb");  // Replace with your Formspree form ID
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://smtpjs.com/v3/smtp.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    script.onload = () => console.log("SMTP.js Loaded");
-    script.onerror = () => console.error("Failed to load SMTP.js");
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+    if (state.succeeded) {
+      // Show success message as alert
+      alert("Message sent successfully!");
+      
+      // Reset form fields
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+    }
+  }, [state.succeeded]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!window.Email) {
-      alert("SMTP.js not loaded. Please try again.");
-      return;
-    }
-
-    // SMTP.js Email Send Function
-    window.Email.send({
-      SecureToken: "6daa3532-c612-4e36-b62c-0013f5413a00", // SMTP.js secure token
-      To: "singhnarukaarjun@gmail.com", // Email to send
-      From: formData.email, // Sender email
-      Subject: "New Contact Form Submission",
-      Body: `
-        <h2>New Message from Contact Form</h2>
-        <p><b>Name:</b> ${formData.name}</p>
-        <p><b>Email:</b> ${formData.email}</p>
-        <p><b>Message:</b> ${formData.message}</p>
-      `,
-    }).then(() => alert("Message sent successfully!"));
-  };
+ 
 
   return (
     <>
+   
+   
       <div className="flex justify-center items-center gap-3 mt-10 mb-10">
         <h4 className="text-5xl sm:text-4xl font-extrabold text-gray-800 uppercase tracking-wide relative">
           Contact Us
@@ -139,6 +116,7 @@ const ContactUs = () => {
 
             <button
               type="submit"
+              disabled={state.submitting}
               className="w-full py-3 bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 text-white font-semibold rounded-lg shadow-xl hover:from-blue-600 hover:to-teal-600 focus:outline-none focus:ring-4 focus:ring-purple-300 transition duration-500 transform hover:scale-10 hover:shadow-2xl"
             >
               Submit

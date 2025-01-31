@@ -23,14 +23,15 @@ import { getFirestore, enableNetwork } from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA28MhaTVs91xujNF_f1tVf9gXvXFQF9uE",
-  authDomain: "unitradehub-21eb3.firebaseapp.com",
-  projectId: "unitradehub-21eb3",
-  storageBucket: "unitradehub-21eb3.firebasestorage.app",
-  messagingSenderId: "289359386674",
-  appId: "1:289359386674:web:ec9fe6ddfe4277740dc42b",
-  measurementId: "G-2JX83TSXQT"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
+console.log(import.meta.env.VITE_FIREBASE_API_KEY); // Check if it logs the value correctly
 
 // Initialize Firebase app
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);

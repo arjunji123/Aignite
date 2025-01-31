@@ -16,7 +16,9 @@ import { MockInterviewPage } from "./routes/mock-interview-page";
 import { Feedback } from "./routes/feedback";
 import AboutUs from "./routes/about-us";
 import ContactUs from "./routes/contact-us";
-
+import InterviewPrep from "./routes/interview-prep";
+import ResumeBuilder from "./routes/resume-builder";
+import CareerCoaching from "./routes/career-coaching";
 const App = () => {
   return (
     <Router>
@@ -26,6 +28,9 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route  path="/about-us" element={<AboutUs />} />
           <Route  path="/contact-us" element={<ContactUs />} />
+          <Route  path="/services/interview-prep" element={<InterviewPrep />} />
+          <Route  path="/services/resume-building" element={<ResumeBuilder />} />
+          <Route  path="/services/career-coaching" element={<CareerCoaching />} />
         </Route>
 
         {/* authentication layout */}
