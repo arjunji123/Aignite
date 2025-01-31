@@ -31,7 +31,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
-console.log(import.meta.env.VITE_FIREBASE_API_KEY); // Check if it logs the value correctly
 
 // Initialize Firebase app
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
@@ -40,8 +39,6 @@ const db = getFirestore(app);
 // Refactor the code to use an async function for top-level await
 async function initializeFirebase() {
   await enableNetwork(db);
-  console.log("Firestore is now online");
-  console.log("Firebase App Initialized:", getApps().length ? getApp() : initializeApp(firebaseConfig));
 }
 
 // Call the async function
