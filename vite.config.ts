@@ -13,4 +13,8 @@ export default defineConfig({
   build: {
     target: 'es2022'  // Use ES2022 or higher to support top-level await
   },
+  server: {
+    port: 5173, // or any other port number
+    host: '0.0.0.0', // To make it accessible on all network interfaces
+  }
 })
