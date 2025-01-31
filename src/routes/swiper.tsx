@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/swiper-bundle.css';  // This imports both the general Swiper and the pagination styles
-import { Pagination } from "swiper/modules";
+import { Navigation,Pagination } from "swiper/modules";
 import "./about-us.css"; // Make sure you have this file
 
 const FeaturesSlider = () => {
